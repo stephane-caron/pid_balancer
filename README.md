@@ -2,7 +2,7 @@
 
 [![upkie](https://img.shields.io/badge/upkie-5.1.0-cyan)](https://github.com/upkie/upkie/tree/v5.1.0)
 
-The PID balancer is a baseline agent designed to test new Upkies with minimum dependencies. Try it out as follows:
+This repository implements PID balance control for [Upkie](https://github.com/upkie) wheeled biped robots. It was originally developed as a baseline agent designed to test new Upkies with minimum dependencies. You can run it as follows:
 
 ```console
 ./run_pid_balancer.sh
