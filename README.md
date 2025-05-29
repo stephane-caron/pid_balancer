@@ -8,9 +8,13 @@ This repository implements PID balance control for [Upkie](https://github.com/up
 ./run_pid_balancer.sh
 ```
 
-The agent balances the robot by PI feedback from torso-pitch and ground-position to wheel velocities (`WheelController`), keeping the legs' hip and knee joints straight (`ServoController`). The wheel controller adds a feedforward [non-minimum phase trick](https://github.com/upkie/pid_balancer/blob/75c6d8080e7f723171e172e7ec62983e09c76037/pid_balancer/wheel_controller.py#L433-L456) for smoother transitions from standing to rolling.
+The script will compile and run a Bullet spine. It requires a functional [development environment](https://github.com/upkie/upkie/blob/e12fb21bf1565c6d0aaa54c52c790f2aabc7f36a/docs/dev-notes.md#legacy-source-workflow).
 
-## Non-minimum phase trick
+## Controller design
+
+The agent balances the robot by PI feedback (no derivative term) from torso-pitch and ground-position to wheel velocities (`WheelController`), keeping the legs' hip and knee joints straight (`ServoController`).
+
+### Non-minimum phase trick
 
 As per control theory's book, the proper feedforward velocity should be `+self.target_ground_velocity` as computed from joystick inputs. However, it is with resolute purpose that we send `-self.target_ground_velocity` at [this line](https://github.com/upkie/pid_balancer/blob/75c6d8080e7f723171e172e7ec62983e09c76037/pid_balancer/wheel_controller.py#L457) instead!
 
