@@ -1,4 +1,4 @@
-# PID balancer
+# Upkie PID balancer
 
 [![upkie](https://img.shields.io/badge/upkie-5.1.0-cyan)](https://github.com/upkie/upkie/tree/v5.1.0)
 
@@ -16,7 +16,7 @@ The agent balances the robot by PI feedback (no derivative term) from torso-pitc
 
 ### Non-minimum phase trick
 
-As per control theory's book, the proper feedforward velocity should be `+self.target_ground_velocity` as computed from joystick inputs. However, it is with resolute purpose that we send `-self.target_ground_velocity` at [this line](https://github.com/upkie/pid_balancer/blob/75c6d8080e7f723171e172e7ec62983e09c76037/pid_balancer/wheel_controller.py#L457) instead!
+The wheel controller adds a feedforward [non-minimum phase trick](https://github.com/stephane-caron/upkie_pid_balancer/blob/75c6d8080e7f723171e172e7ec62983e09c76037/pid_balancer/wheel_controller.py#L433-L456) for smoother transitions from standing to rolling. As per control theory's book, the proper feedforward velocity should be `+self.target_ground_velocity` as computed from joystick inputs. However, it is with resolute purpose that we send `-self.target_ground_velocity` at [this line](https://github.com/stephane-caron/upkie_pid_balancer/blob/75c6d8080e7f723171e172e7ec62983e09c76037/pid_balancer/wheel_controller.py#L457) instead!
 
 This hack is not purely out of a spirit of contradiction. Changing velocity in a [wheeled inverted pendulum](https://scaron.info/robotics/wheeled-inverted-pendulum-model.html) model is a non-minimum phase behavior (to accelerate forward, the ZMP to move backward at first, then forward), and our feedback can't realize that (it only takes care of balancing around a stationary velocity).
 
