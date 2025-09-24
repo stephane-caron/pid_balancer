@@ -2,13 +2,15 @@
 
 [![upkie](https://img.shields.io/badge/upkie-5.1.0-cyan)](https://github.com/upkie/upkie/tree/v5.1.0)
 
-This repository implements PID balance control for [Upkie](https://github.com/upkie) wheeled biped robots. It was originally developed as a baseline agent designed to test new Upkies with minimum dependencies. You can run it as follows:
+This repository implements PID balance control for [Upkie](https://github.com/upkie/upkie) wheeled biped robots. This repository works with version 5.1.0 of the robot software.
+
+You should be able run it in a standalone simulation with the following script:
 
 ```console
 ./run_pid_balancer.sh
 ```
 
-The script will compile and run a Bullet spine. It requires a functional [development environment](https://github.com/upkie/upkie/blob/e12fb21bf1565c6d0aaa54c52c790f2aabc7f36a/docs/dev-notes.md#legacy-source-workflow).
+The script will compile and run a Bullet spine. It requires a functional [development environment](https://github.com/upkie/upkie/blob/e12fb21bf1565c6d0aaa54c52c790f2aabc7f36a/docs/dev-notes.md#legacy-source-workflow) with the corresponding version of the robot software.
 
 ## Controller design
 
