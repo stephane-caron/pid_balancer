@@ -1,4 +1,4 @@
-# Upkie PID balancer
+# PID balancer for Upkie wheeled bipeds
 
 [![upkie](https://img.shields.io/badge/upkie-5.1.0-cyan)](https://github.com/upkie/upkie/tree/v5.1.0)
 
